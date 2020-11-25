@@ -1,0 +1,92 @@
+@import'default';
+
+$primary-color: salmon;
+$primary-font: sans-serif, 'cursive';
+
+body {
+    background: $primary-color;
+    font-family: $primary-font;
+}
+
+.container {
+    width: 100%;
+    min-height: 400px;
+    nav {
+        ul {
+            li{
+                &:nth-child(1) {
+                    font-size: 1rem;
+                }
+                &:nth-child(2) {
+                    font-size: 2rem;
+                }
+            }
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin transform_me($prop1, $prop2) {
+    width: $prop1;
+    height: $prop2;
+    background-color: yellow;
+    transform: rotate(20deg) scale(1.5);
+}
+
+.transform {
+    @include transform_me(100px, 300px);
+    font-size: 3rem;
+}
+
+.transform-2 {
+    @include transform_me(200px, 300px);
+}
+
+%extend-border {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+
+%extend-new {
+    margin: 20px;
+    color: #333;
+}
+
+.border {
+    @extend %extend-border;
+}
+
+.border1 {
+    @extend %extend-border;
+    margin: 20px;
+}
+
+.element {
+    a {
+        text-decoration: none;
+        color: #000;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.header {
+    font-size: 4px + 2;
+    height: 80% - 5%;
+}
+
+.multi {
+    width: 20% * 5;
+    height: 24px / 4;
+}
+
+p {
+    &:before {
+        content: "I am a string with " + quate;
+        font-family: cursive + "serif";
+    }
+}
